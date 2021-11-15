@@ -1,2 +1,2 @@
-# tailwind-theme-viewer
-Single Page Application to visualize and teste TailwindCSS theme colors
+# Tailwind Theme Viewer
+Single Page Application to visualize and test TailwindCSS theme colors
