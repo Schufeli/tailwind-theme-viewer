@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <pre><code>extend: {{ output }}</code></pre>
+                <pre><code v-html="output"></code></pre>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button @click="close()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
@@ -42,7 +42,7 @@ export default {
             name: 'Custom',
             valid: true,
             nameEntered: false,
-            output: this.format()
+            output: this.stringify()
         }
     },
     methods: {
@@ -50,25 +50,24 @@ export default {
             this.$emit('toggle');
             this.nameEntered = false;
         },
-        format() {
-            const output = {
-                colors: {
-                    custom: {
-                        100: this.colors[0].value,
-                        200: this.colors[1].value,
-                        300: this.colors[2].value,
-                        400: this.colors[3].value,
-                        500: this.colors[4].value,
-                        600: this.colors[5].value,
-                        700: this.colors[6].value,
-                        800: this.colors[7].value,
-                        900: this.colors[8].value
-                    }
-                }
-            }
-            
-            return output;
+        stringify(obj: any) {
+            return `extend: { 
+    colors: {
+        custom: {
+            100: "${this.colors[0].value}"
+            200: "${this.colors[1].value}"
+            300: "${this.colors[2].value}"
+            400: "${this.colors[3].value}"
+            500: "${this.colors[4].value}"
+            600: "${this.colors[5].value}"
+            700: "${this.colors[6].value}"
+            800: "${this.colors[7].value}"
+            900: "${this.colors[8].value}"
         }
+    }
+}
+            `
+        }  
     }
 }
 </script>
