@@ -1,5 +1,6 @@
 <template>
 <main class="h-screen flex">
+  <modal v-if="modal" :colors="colors" @toggle="toggle()"></modal>
   <!-- color preview section -->
   <div class="h-full sm:w-2/3 md:w-3/4 pt-1 px-2 bg-gray-100">
     <preview :colors="colors"></preview>
@@ -11,12 +12,12 @@
     <div class="button-container">
       <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5 inline-flex items-center justify-center">
         <span>Generate</span>
-          <span class="material-icons fill-current ml-2">refresh</span>
+        <span class="material-icons fill-current ml-2">refresh</span>
       </button>
-      <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded inline-flex items-center justify-center">
-        <span>Download</span>
+      <button @click="toggle()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded inline-flex items-center justify-center">
+        <span>Export</span>
         <span class="material-icons fill-current ml-2">file_download</span>
-      </button>
+    </button>
     </div>
   </div>
 </main>
@@ -24,16 +25,20 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import Navigation from './components/Navigation.vue';
 import './assets/tailwind.css'
+import Navigation from './components/Navigation.vue';
 import Preview from './components/Preview.vue';
+import Modal from './components/Modal.vue';
 @Options({
   components: {
     Navigation,
-    Preview
+    Preview,
+    Modal
   },
 })
 export default class App extends Vue {
+  name = 'custom';
+  modal = false;
   colors = [
     {
       name: '100',
@@ -72,6 +77,16 @@ export default class App extends Vue {
       value: '#212529'
     }
   ];
+
+  toggle() {
+    switch (this.modal) {
+      case false:
+        this.modal = true;
+        break;
+      case true:
+        this.modal = false;
+    }
+  }
 }
 </script>
 
@@ -79,4 +94,8 @@ export default class App extends Vue {
   @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
   .button-container {
   }
+
+  input {
+    @apply border-2 p-2 rounded-md focus:bg-white focus:ring-indigo-500 focus:border-indigo-500 w-full;
+}
 </style>

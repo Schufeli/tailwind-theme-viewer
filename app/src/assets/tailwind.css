@@ -1,5 +1,9 @@
 @tailwind base;
 
+input {
+    @apply border-2 p-2 rounded-md focus:bg-white focus:ring-indigo-500 focus:border-indigo-500 w-full;
+}
+
 @tailwind components;
 
 @tailwind utilities;
