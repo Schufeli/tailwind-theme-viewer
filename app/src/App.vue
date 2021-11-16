@@ -1,12 +1,12 @@
 <template>
-<main class="h-screen flex">
+<main class="h-screen flex bg-gray-100">
   <modal v-if="modal" :colors="colors" @toggle="toggle()"></modal>
   <!-- color preview section -->
   <div class="h-full sm:w-2/3 md:w-3/4 pt-1 px-2 bg-gray-100">
     <preview :colors="colors"></preview>
   </div>
   <!-- color input section -->
-  <div class="h-full sm:w-1/3 md:w-1/4 px-2 bg-gray-300 shadow-lg py-5 flex flex-col justify-between">
+  <div class="sm:w-1/3 md:w-1/4 px-2 bg-gray-300 shadow-2xl py-5 flex flex-col justify-between rounded-l-lg my-6">
     <navigation v-model:colors="colors"></navigation>
 
     <div class="button-container">
@@ -93,6 +93,7 @@ export default class App extends Vue {
 <style lang="postcss" scoped>
   @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
   .button-container {
+    @apply mx-7;
   }
 
   input {
