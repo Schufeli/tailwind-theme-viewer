@@ -10,10 +10,10 @@
     <navigation v-model:colors="colors"></navigation>
 
     <div class="button-container">
-      <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5 inline-flex items-center justify-center">
+      <!-- <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5 inline-flex items-center justify-center">
         <span>Generate</span>
         <span class="material-icons fill-current ml-2">refresh</span>
-      </button>
+      </button> -->
       <button @click="toggle()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded inline-flex items-center justify-center">
         <span>Export</span>
         <span class="material-icons fill-current ml-2">file_download</span>
