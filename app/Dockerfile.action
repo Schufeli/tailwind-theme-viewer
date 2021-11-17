@@ -3,7 +3,7 @@ FROM node:alpine as develop-stage
 WORKDIR /app
 COPY /app/package*.json .
 RUN npm install
-COPY . ./
+COPY . /app
 
 # build stage
 FROM develop-stage as build-stage
