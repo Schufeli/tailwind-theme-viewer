@@ -1,7 +1,7 @@
 FROM node:alpine as build-step
 
 WORKDIR /app
-COPY package.json /app
+COPY /app/package.json /app
 RUN npm install
 
 COPY . /app/
