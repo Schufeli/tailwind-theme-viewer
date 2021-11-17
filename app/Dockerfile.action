@@ -7,7 +7,7 @@ COPY /app .
 
 # build stage
 FROM develop-stage as build-stage
-# ENV NODE_OPTIONS=--openssl-legacy-provider
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
 # production stage
