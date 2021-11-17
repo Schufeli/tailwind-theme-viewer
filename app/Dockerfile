@@ -4,11 +4,11 @@ FROM node:alpine as build-step
 WORKDIR /app
 COPY /app/package.json /app
 RUN npm install
-COPY /app .
+COPY . .
 
 RUN npm run build
 
 # Stage 2
 
 FROM nginx:alpine
-COPY --from=build-step /dist /usr/share/nginx/html
+COPY --from=build-step /app/dist /usr/share/nginx/html
