@@ -1,12 +1,10 @@
 # Stage 1
 
 FROM node:alpine as build-step
-
-FROM node:alpine as build-step
 WORKDIR /app
-COPY package.json /app
+COPY /app/package.json /app
 RUN npm install
-COPY . /app
+COPY /app .
 
 RUN npm run build
 
