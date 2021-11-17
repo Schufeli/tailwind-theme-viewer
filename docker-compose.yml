@@ -1,0 +1,6 @@
+version: '3.5'
+
+services:
+  github-pinned:
+    image: schufeli/tailwind-theme-viewer
+    container_name: tailwind-theme-viewer
