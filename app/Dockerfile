@@ -1,10 +1,10 @@
 FROM node:alpine as build-step
 
 WORKDIR /app
-COPY /app/package.json /app
+COPY package.json /app
 RUN npm install
 
-COPY . /app/
+COPY . /app
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
