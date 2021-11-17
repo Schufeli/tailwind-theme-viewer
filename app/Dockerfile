@@ -1,14 +1,12 @@
-# Stage 1
-
 FROM node:alpine as build-step
-WORKDIR /app
-COPY /app/package.json /app
-RUN npm install
-COPY /app /app
 
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+
+COPY . /app/
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm run build
 
-# Stage 2
-
-FROM nginx:alpine
-COPY --from=build-step /dist /usr/share/nginx/html
+FROM nginx:alpine as deployment-step
+COPY --from=build-step /app/dist /usr/share/nginx/html
